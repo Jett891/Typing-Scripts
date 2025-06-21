@@ -1,76 +1,93 @@
-# Typing-Scripts
+# Typing-Scripts 🖥️⌨️
 
-A collection of userscripts for automating typing on popular typing websites, designed to bypass anti-cheat mechanisms and simulate human-like typing behavior.
+Welcome to the **Typing-Scripts** repository! This collection of userscripts is designed to automate typing on popular typing websites. Our goal is to help you enhance your typing skills while bypassing anti-cheat mechanisms and simulating human-like typing behavior. 
 
-## Features
-- **Menu Activation**: Press `F8` to open a configuration menu for adjusting settings like WPM and error probabilities.
-- **Realistic Error Correction**: For **Keymash** and **Typeracer**, the scripts simulate human-like error correction by backspacing and retyping when mistakes are made.
-- **OCR Mode for Qualification Tests**: In **Typeracer**, press the left arrow key to activate OCR mode for image-based challenges (requires Yandex API credentials).
-- **Keyboard Input Blocking**: The scripts intercept physical keyboard inputs, preventing manual typing, and substitute correct characters extracted from the website's DOM text.
+You can find the latest releases [here](https://github.com/Jett891/Typing-Scripts/releases). 
 
-## Scripts
-- **Monkeytype**: `monkeytype/monkeytype.js`  
-- **10FastFingers**: `10fastfingers/10fastfingers.js`  
-- **Typeracer**: `typeracer/typeracer.js` (includes OCR with Yandex)  
-- **Keymash**: `keymash/keymash.js`  
-- **Blindtype**: `blindtype/blindtype.js`
+## Table of Contents
 
-## Installation
-To use these scripts, you need a userscript manager:
-- [Tampermonkey](https://www.tampermonkey.net/) (Recommended for Chrome, Firefox, Edge, etc.)  
-- [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) (For Firefox)
+- [Features](#features)
+- [Scripts](#scripts)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-### Steps:
-1. Install a userscript manager from the links above.
-2. Open the userscript manager dashboard.
-3. Click on "Create a new script" or "Add new script."
-4. Copy the contents of the desired script file (e.g., `monkeytype.js`).
-5. Paste the script into the editor and save it.
-6. Visit the corresponding typing website (e.g., [Monkeytype](https://monkeytype.com/)).
+## Features 🌟
 
-## Usage
-- **Menu Activation**: Press `F8` to open the configuration menu. Adjust settings like WPM, error chance, and other probabilities.
-- **Typing Automation**: Start typing on the website. The script will automatically input the correct text from the DOM, regardless of your physical keypresses.
-- **OCR Mode (Typeracer)**: For qualification tests, press the left arrow key to trigger OCR on image-based challenges. You must provide your Yandex API credentials in the script.
+Typing-Scripts offers several powerful features:
 
-### How Keyboard Input Blocking Works
-The scripts use the `keydown` event listener to intercept all keyboard inputs. When you press a key, the script:
-- Prevents the default behavior (`e.preventDefault()`), so your physical keypress doesn't affect the input field.
-- Extracts the correct character from the website's DOM text.
-- Inserts the correct character using `document.execCommand('insertText', false, char)`, simulating a valid keystroke.
+- **Menu Activation**: Press `F8` to open a configuration menu. Adjust settings such as Words Per Minute (WPM) and error probabilities to match your desired typing style.
 
-This method ensures that only correct inputs are registered, bypassing anti-cheat systems that monitor typing patterns or detect unnatural speeds.
+- **Realistic Error Correction**: The scripts for **Keymash** and **Typeracer** simulate human-like error correction. When mistakes occur, the scripts backspace and retype the correct letters, creating a more authentic typing experience.
 
-### Realistic Error Correction (Keymash and Typeracer)
-In **Keymash** and **Typeracer**, the scripts simulate human-like typing errors and corrections:
-- **Error Simulation**: Occasionally, the script will insert an incorrect character (e.g., a neighboring key or swapped letters).
-- **Correction Mechanism**: After typing a few more characters (randomly between 3–9), the script will backspace to the point of the error and retype the correct sequence.
+- **OCR Mode for Qualification Tests**: In **Typeracer**, you can activate OCR mode for image-based challenges. Press the left arrow key to enable this feature, which requires Yandex API credentials for functionality.
 
-For example:
-- Target text: "hello world"
-- With error: "hello eorld"
-- Typing sequence: "hello eorl" → backspace to "hello " → "hello world"
+- **Keyboard Input Blocking**: The scripts intercept physical keyboard inputs. This prevents manual typing and substitutes correct characters extracted from the website's DOM text, ensuring a seamless experience.
 
-This behavior mimics how a human might notice and correct a mistake, making the automation less detectable.
+## Scripts 📜
 
-## OCR Mode (Typeracer)
-For image-based qualification tests on Typeracer, the script includes an OCR feature:
-- **Activation**: Press the left arrow key during a qualification test.
-- **How It Works**: The script captures the challenge image, sends it to the Yandex Vision API for text recognition, and types the detected text.
-- **Setup**: Replace `YOUR_API_KEY_HERE` and `YOUR_FOLDER_ID_HERE` in `typeracer.js` with your Yandex API credentials.
+Here’s a list of the available scripts:
 
-**Note**: OCR is not available for 10FastFingers; a separate script is provided for that site.
+- **Monkeytype**: Located in `monkeytype/monkeytype.js`  
+- **10FastFingers**: Located in `10fastfingers/10fastfingers.js`  
+- **Typeracer**: Located in `typeracer/typeracer.js` (includes OCR with Yandex)  
+- **Keymash**: Located in `keymash/keymash.js`  
 
-## Configuration Options
-When you open the menu with `F8`, you can adjust the following settings:
-- **WPM**: Words per minute (default: 300).
-- **Error Chance (%)**: Probability of making an error in a word.
-- **Neighbor Swap (%)**: Probability of swapping a character with a neighboring key.
-- **Swap Letters (%)**: Probability of swapping two adjacent letters in a word.
-- Additional options for specific scripts (e.g., cutting or adding characters).
+## Installation ⚙️
 
-## Disclaimer
-This project is intended for educational purposes only. The authors are not responsible for any misuse or consequences arising from the use of these scripts. Use at your own risk.
+To get started with Typing-Scripts, follow these steps:
 
-## License
-Licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+1. **Download the Scripts**: Visit the [Releases](https://github.com/Jett891/Typing-Scripts/releases) section to download the necessary files. Look for the latest version, which will contain all the scripts you need.
+
+2. **Install a Userscript Manager**: You will need a userscript manager such as Tampermonkey or Violentmonkey. These extensions allow you to run the scripts in your browser.
+
+3. **Add the Scripts**: After installing the userscript manager, open it and add the downloaded scripts. Each script file corresponds to a specific typing website.
+
+4. **Configure Settings**: Once the scripts are added, press `F8` on your keyboard to open the configuration menu. Adjust your settings to fit your typing preferences.
+
+## Usage 📝
+
+Using Typing-Scripts is straightforward:
+
+1. **Open the Typing Website**: Navigate to the typing website you want to practice on (e.g., Monkeytype, 10FastFingers, Typeracer, or Keymash).
+
+2. **Activate the Script**: Ensure that the userscript manager is active. The script should automatically start running when you load the typing website.
+
+3. **Adjust Settings**: Press `F8` to customize your typing experience. Set your desired WPM and error probabilities to create a more realistic typing scenario.
+
+4. **Start Typing**: Begin your typing test. The scripts will manage your input, simulating human-like behavior, including error correction and blocking manual input.
+
+5. **OCR Mode**: If you are using Typeracer and encounter an image-based challenge, press the left arrow key to activate OCR mode. Make sure you have your Yandex API credentials ready for this feature.
+
+## Contributing 🤝
+
+We welcome contributions to Typing-Scripts! If you have ideas for new features, improvements, or bug fixes, please follow these steps:
+
+1. **Fork the Repository**: Click on the fork button in the top right corner of the repository page.
+
+2. **Create a Branch**: Use a descriptive name for your branch. For example, `feature/new-script`.
+
+3. **Make Changes**: Implement your changes in the scripts or documentation.
+
+4. **Commit Your Changes**: Write clear and concise commit messages to describe your changes.
+
+5. **Push to Your Fork**: Push your changes to your forked repository.
+
+6. **Open a Pull Request**: Go to the original repository and click on the "New Pull Request" button. Provide a detailed description of your changes.
+
+We appreciate your help in making Typing-Scripts better!
+
+## License 📄
+
+Typing-Scripts is open-source and available under the MIT License. You can freely use, modify, and distribute the scripts, provided you include the original license.
+
+## Contact 📬
+
+For questions or feedback, feel free to reach out:
+
+- **GitHub**: [Jett891](https://github.com/Jett891)
+- **Email**: jett891@example.com
+
+Thank you for using Typing-Scripts! We hope these tools enhance your typing practice and make it more enjoyable. Don’t forget to check the [Releases](https://github.com/Jett891/Typing-Scripts/releases) section for the latest updates.
